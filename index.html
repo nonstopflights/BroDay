@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bro Day</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .message {
+            font-size: 60pt;
+            text-align: center;
+        }
+        .sad-emoji {
+            font-size: 200pt;
+        }
+    </style>
+</head>
+<body>
+    <div class="message" id="message"></div>
+    <script>
+        function checkDay() {
+            const messageDiv = document.getElementById('message');
+            const today = new Date().getDay(); // Get the current day (0-6, where 0 is Sunday and 6 is Saturday)
+            if (today === 4) { // 4 represents Thursday
+                messageDiv.textContent = "It's bro day!";
+            } else {
+                messageDiv.textContent = "😢";
+                messageDiv.classList.add('sad-emoji');
+            }
+        }
+        checkDay();
+    </script>
+</body>
+</html>
