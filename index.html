@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Is It Bro Day?</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root {
+  --bg: #0d0d0d;
+  --accent: #ff55a1;
+  --text: #fefefe;
+  --font-main: 'Inter', sans-serif;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-main);
+  padding: 2rem;
+  text-align: center;
+}
+h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  margin: 0 0 1rem;
+}
+#quote {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  max-width: 40ch;
+}
+img {
+  max-width: 90vw;
+  max-height: 70vh;
+  border-radius: 1rem;
+  box-shadow: 0 0 30px rgba(255,85,161,0.6);
+}
+footer {
+  position: absolute;
+  bottom: 1rem;
+  font-size: .875rem;
+  opacity: .6;
+}
+a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<h1 id="heading"></h1>
+<div id="quote"></div>
+<img id="broImg" src="broday.jpg" alt="Bro Day" style="display:none;">
+<footer>Made with 🤙 by IsItBroDay.com</footer>
+<script>
+const quotes = [
+  "Nope, it's still ✨Not Bro Day✨. Hold your fist-bumps til Thursday!",
+  "Keep calm, champ. Bro Day hasn't clocked in yet.",
+  "It's not Thursday, so your inner bro is hitting the snooze button.",
+  "Easy there, turbo—Bro Day is on a coffee break until Thursday.",
+  "False alarm! Today is Bro-free. Resume normal human activities.",
+  "Sorry sport, Bro Day is still loading... try refreshing on Thursday.",
+  "Bro Day? Negative, ghost‑rider. Pattern is full.",
+  "Hang tight, chief. The handshake explosion is on back‑order till Thursday.",
+  "Today’s vibe check: zero bros detected.",
+  "Put the backwards cap down—it's not the sacred day.",
+  "Do leg day instead; Bro Day is skipping you.",
+  "Bro Day absence makes the heart grow fonder. Wait it out.",
+  "Keep your sleeveless hoodie holstered until Thursday.",
+  "No flex zone—Bro Day credentials invalid today.",
+  "Bro Day is busy binge‑watching '90s wrestling—returns Thursday.",
+  "False start! Flag on the play. Repeat until Thursday.",
+  "Your bro license renews on Thursday. Return later.",
+  "Bro‑tein shake denied. Not authorized outside Thursday.",
+  "No chest bumps today; save the air for Thursday cheers.",
+  "Alert: bro‑wave postponed due to non‑Thursday conditions.",
+  "It's like Wednesday is friendzoning Bro Day. Tough luck.",
+  "Compile error: ‘BroDay’ undefined until Thursday.",
+  "Out of stock: high‑fives and bro‑hugs until Thursday replenishment.",
+  "Not Bro Day yet—practice your ‘sup?’ in the mirror meanwhile.",
+  "Thursday called; it said ‘Stop asking, I'll be there.’"
+];
+function updatePage(){
+  const today = new Date();
+  const isThursday = today.getDay() === 4; // 0=Sun,...,4=Thu
+  const heading = document.getElementById('heading');
+  const quoteEl = document.getElementById('quote');
+  const imgEl = document.getElementById('broImg');
+  if(isThursday){
+     heading.textContent = "YES. IT IS BRO DAY 🕺";
+     quoteEl.style.display = 'none';
+     imgEl.style.display = 'block';
+  }else{
+     heading.textContent = "Nope.";
+     imgEl.style.display = 'none';
+     quoteEl.style.display = 'block';
+     quoteEl.textContent = quotes[Math.floor(Math.random()*quotes.length)];
+  }
+}
+updatePage();
+</script>
+</body>
+</html>
+
