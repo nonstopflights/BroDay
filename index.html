@@ -53,10 +53,45 @@ a { color: var(--accent); text-decoration: none; }
   50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+@keyframes pulseGlow {
+  0%, 100% { 
+    text-shadow: 0 0 20px rgba(255,255,255,0.8), 
+                 0 0 40px rgba(255,255,255,0.6), 
+                 0 0 60px rgba(255,255,255,0.4);
+    transform: scale(1);
+  }
+  50% { 
+    text-shadow: 0 0 40px rgba(255,255,255,1), 
+                 0 0 80px rgba(255,255,255,0.8), 
+                 0 0 120px rgba(255,255,255,0.6);
+    transform: scale(1.05);
+  }
+}
 .rainbow {
-  background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
-  background-size: 400% 400%;
-  animation: rainbowAnim 15s ease infinite;
+  background: linear-gradient(45deg, 
+    #ff0000, #ff4500, #ffa500, #ffff00, 
+    #9acd32, #00ff00, #00ffff, #0000ff, 
+    #8a2be2, #ff1493, #ff69b4, #ff0000);
+  background-size: 600% 600%;
+  animation: rainbowAnim 8s ease infinite;
+}
+.bro-day-mode {
+  overflow: hidden !important;
+}
+.bro-day-text {
+  font-size: clamp(4rem, 15vw, 20rem) !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  color: white !important;
+  text-shadow: 
+    0 0 20px rgba(255,255,255,0.8),
+    0 0 40px rgba(255,255,255,0.6),
+    0 0 60px rgba(255,255,255,0.4),
+    4px 4px 8px rgba(0,0,0,0.3) !important;
+  animation: pulseGlow 2s ease-in-out infinite !important;
+  z-index: 10 !important;
+  position: relative !important;
 }
 </style>
 </head>
@@ -95,19 +130,27 @@ const quotes = [
 ];
 function updatePage(){
   const today = new Date();
-  const isThursday = today.getDay() === 4; // 0=Sun,...,4=Thu
+  const isThursday = today.getDay() === 3; // 0=Sun,...,4=Thu
   const heading = document.getElementById('heading');
   const quoteEl = document.getElementById('quote');
   const imgEl = document.getElementById('broImg');
+  const footer = document.querySelector('footer');
+  
   document.body.classList.toggle('rainbow', isThursday);
+  document.body.classList.toggle('bro-day-mode', isThursday);
+  
   if(isThursday){
-     heading.textContent = "YES. IT IS BRO DAY 🕺";
+     heading.textContent = "BRO DAY!";
+     heading.classList.add('bro-day-text');
      quoteEl.style.display = 'none';
-     imgEl.style.display = 'block';
+     imgEl.style.display = 'none';
+     footer.style.display = 'none';
   }else{
      heading.textContent = "Nope.";
+     heading.classList.remove('bro-day-text');
      imgEl.style.display = 'none';
      quoteEl.style.display = 'block';
+     footer.style.display = 'block';
      quoteEl.textContent = quotes[Math.floor(Math.random()*quotes.length)];
   }
 }
