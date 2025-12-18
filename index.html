@@ -4,6 +4,21 @@
 <meta charset="utf-8">
 <title>Is It Bro Day?</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.isitbroday.com/">
+<meta property="og:title" content="Is It Bro Day?">
+<meta property="og:description" content="Find out if it's Bro Day!">
+<meta property="og:image" content="https://www.isitbroday.com/pics/1.jpeg">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://www.isitbroday.com/">
+<meta property="twitter:title" content="Is It Bro Day?">
+<meta property="twitter:description" content="Find out if it's Bro Day!">
+<meta property="twitter:image" content="https://www.isitbroday.com/pics/1.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Bungee&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #ffffff;
@@ -14,37 +29,123 @@
 * { box-sizing: border-box; }
 body {
   margin: 0;
+  padding: 0;
+  overflow: hidden;
   height: 100vh;
+  width: 100vw;
+  background: #ffffff;
+}
+.scroll-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
   display: flex;
+  align-items: center;
+}
+.scroll-container.centered {
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-main);
-  font-size: 1.25rem;
-  padding: 2rem;
+  gap: 1rem;
+  padding: 1rem;
+}
+@media (min-width: 768px) {
+  .scroll-container.centered {
+    gap: 2rem;
+    padding: 2rem;
+  }
+}
+.scroll-content {
+  display: flex;
+  white-space: nowrap;
+  animation: scroll 15s linear infinite;
+  font-family: 'Bungee Shade', cursive;
+  font-size: clamp(2rem, 8vw, 20rem);
+  font-weight: 900;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 
+    0 0 20px rgba(0,0,0,0.3),
+    0 0 40px rgba(0,0,0,0.2),
+    0 0 60px rgba(0,0,0,0.1),
+    2px 2px 4px rgba(0,0,0,0.2);
+}
+@media (min-width: 768px) {
+  .scroll-content {
+    animation-duration: 20s;
+  }
+}
+.scroll-content.centered {
+  display: block;
+  animation: none;
   text-align: center;
+  white-space: normal;
+  font-size: clamp(2.5rem, 10vw, 12rem);
+  padding: 0 1rem;
 }
-h1 {
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  margin: 0 0 1rem;
+@media (min-width: 768px) {
+  .scroll-content.centered {
+    font-size: clamp(4rem, 15vw, 20rem);
+    padding: 0;
+  }
 }
-#quote {
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
-  max-width: 40ch;
+.scroll-content span {
+  display: inline-block;
+  padding: 0 1rem;
+  flex-shrink: 0;
 }
-img {
-  max-width: 90vw;
-  max-height: 70vh;
-  border-radius: 1rem;
-  box-shadow: 0 0 30px rgba(255,85,161,0.6);
+@media (min-width: 768px) {
+  .scroll-content span {
+    padding: 0 2rem;
+  }
 }
-footer {
-  position: absolute;
-  bottom: 1rem;
-  font-size: .875rem;
-  opacity: .6;
+.bro-day-image {
+  max-width: 85vw;
+  max-height: 40vh;
+  width: auto;
+  height: auto;
+  border: 8px solid #000;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+@media (min-width: 768px) {
+  .bro-day-image {
+    max-width: 60vw;
+    max-height: 50vh;
+    border-width: 10px;
+  }
+}
+body.not-bro-day {
+  background: #ffffff;
+}
+.scroll-content.not-bro-day {
+  color: #000 !important;
+  text-shadow: 
+    0 0 20px rgba(0,0,0,0.3),
+    0 0 40px rgba(0,0,0,0.2),
+    0 0 60px rgba(0,0,0,0.1),
+    2px 2px 4px rgba(0,0,0,0.2) !important;
+}
+body.rainbow {
+  background: #ffffff;
+}
+.scroll-content.rainbow {
+  color: #000 !important;
+  text-shadow: 
+    0 0 20px rgba(0,0,0,0.3),
+    0 0 40px rgba(0,0,0,0.2),
+    0 0 60px rgba(0,0,0,0.1),
+    2px 2px 4px rgba(0,0,0,0.2) !important;
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 a { color: var(--accent); text-decoration: none; }
 
@@ -53,107 +154,86 @@ a { color: var(--accent); text-decoration: none; }
   50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-@keyframes pulseGlow {
-  0%, 100% { 
-    text-shadow: 0 0 20px rgba(255,255,255,0.8), 
-                 0 0 40px rgba(255,255,255,0.6), 
-                 0 0 60px rgba(255,255,255,0.4);
-    transform: scale(1);
-  }
-  50% { 
-    text-shadow: 0 0 40px rgba(255,255,255,1), 
-                 0 0 80px rgba(255,255,255,0.8), 
-                 0 0 120px rgba(255,255,255,0.6);
-    transform: scale(1.05);
-  }
-}
-.rainbow {
-  background: linear-gradient(45deg, 
-    #ff0000, #ff4500, #ffa500, #ffff00, 
-    #9acd32, #00ff00, #00ffff, #0000ff, 
-    #8a2be2, #ff1493, #ff69b4, #ff0000);
-  background-size: 600% 600%;
-  animation: rainbowAnim 8s ease infinite;
-}
-.bro-day-mode {
-  overflow: hidden !important;
-}
-.bro-day-text {
-  font-size: clamp(4rem, 15vw, 20rem) !important;
-  font-weight: 900 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.1em !important;
-  color: white !important;
-  text-shadow: 
-    0 0 20px rgba(255,255,255,0.8),
-    0 0 40px rgba(255,255,255,0.6),
-    0 0 60px rgba(255,255,255,0.4),
-    4px 4px 8px rgba(0,0,0,0.3) !important;
-  animation: pulseGlow 2s ease-in-out infinite !important;
-  z-index: 10 !important;
-  position: relative !important;
-}
 </style>
 </head>
 <body>
-<h1 id="heading"></h1>
-<div id="quote"></div>
-<img id="broImg" src="pics/1.jpeg" alt="Bro Day" style="display:none;">
-<footer>Made with 🤙 by IsItBroDay.com</footer>
+<div class="scroll-container" id="scrollContainer">
+  <img id="broDayImage" src="pics/1.jpeg" alt="Bro Day" class="bro-day-image" style="display: none;">
+  <div class="scroll-content" id="scrollContent"></div>
+</div>
 <script>
-const quotes = [
-  "Nope, it's still ✨Not Bro Day✨. Hold your fist-bumps til Thursday!",
-  "Keep calm, champ. Bro Day hasn't clocked in yet.",
-  "It's not Thursday, so your inner bro is hitting the snooze button.",
-  "Easy there, turbo—Bro Day is on a coffee break until Thursday.",
-  "False alarm! Today is Bro-free. Resume normal human activities.",
-  "Sorry sport, Bro Day is still loading... try refreshing on Thursday.",
-  "Bro Day? Negative, ghost‑rider. Pattern is full.",
-  "Hang tight, chief. The handshake explosion is on back‑order till Thursday.",
-  "Today’s vibe check: zero bros detected.",
-  "Put the backwards cap down—it's not the sacred day.",
-  "Do leg day instead; Bro Day is skipping you.",
-  "Bro Day absence makes the heart grow fonder. Wait it out.",
-  "Keep your sleeveless hoodie holstered until Thursday.",
-  "No flex zone—Bro Day credentials invalid today.",
-  "Bro Day is busy binge‑watching '90s wrestling—returns Thursday.",
-  "False start! Flag on the play. Repeat until Thursday.",
-  "Your bro license renews on Thursday. Return later.",
-  "Bro‑tein shake denied. Not authorized outside Thursday.",
-  "No chest bumps today; save the air for Thursday cheers.",
-  "Alert: bro‑wave postponed due to non‑Thursday conditions.",
-  "It's like Wednesday is friendzoning Bro Day. Tough luck.",
-  "Compile error: ‘BroDay’ undefined until Thursday.",
-  "Out of stock: high‑fives and bro‑hugs until Thursday replenishment.",
-  "Not Bro Day yet—practice your ‘sup?’ in the mirror meanwhile.",
-  "Thursday called; it said ‘Stop asking, I'll be there.’"
-];
-function updatePage(){
-  const today = new Date();
-  const isThursday = today.getDay() === 3; // 0=Sun,...,4=Thu
-  const heading = document.getElementById('heading');
-  const quoteEl = document.getElementById('quote');
-  const imgEl = document.getElementById('broImg');
-  const footer = document.querySelector('footer');
+function getUrlParams() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    debug: params.get('debug')
+  };
+}
+
+function createInfiniteText(text, container) {
+  // Clear existing content
+  container.innerHTML = '';
   
-  document.body.classList.toggle('rainbow', isThursday);
-  document.body.classList.toggle('bro-day-mode', isThursday);
-  
-  if(isThursday){
-     heading.textContent = "BRO DAY!";
-     heading.classList.add('bro-day-text');
-     quoteEl.style.display = 'none';
-     imgEl.style.display = 'none';
-     footer.style.display = 'none';
-  }else{
-     heading.textContent = "Nope.";
-     heading.classList.remove('bro-day-text');
-     imgEl.style.display = 'none';
-     quoteEl.style.display = 'block';
-     footer.style.display = 'block';
-     quoteEl.textContent = quotes[Math.floor(Math.random()*quotes.length)];
+  // Create enough copies to fill screen and ensure seamless loop
+  // We need at least 2 sets for seamless infinite scroll
+  const copies = 20; // More than enough for any screen size
+  for (let i = 0; i < copies; i++) {
+    const span = document.createElement('span');
+    span.textContent = text;
+    container.appendChild(span);
   }
 }
+
+function updatePage(){
+  const params = getUrlParams();
+  const today = new Date();
+  const isThursday = today.getDay() === 4; // 0=Sun,...,4=Thu
+  
+  let isBroDay = isThursday;
+  let text = 'Bro Day';
+  
+  // Debug mode: show opposite of normal state
+  if (params.debug) {
+    // On Thursday, debug shows "Not Bro Day"
+    // On other days, debug shows "Bro Day"
+    isBroDay = !isThursday;
+    text = isBroDay ? 'Bro Day' : 'Not Bro Day';
+  } else if (!isThursday) {
+    text = 'Not Bro Day';
+  }
+  
+  const scrollContainer = document.getElementById('scrollContainer');
+  const scrollContent = document.getElementById('scrollContent');
+  const broDayImage = document.getElementById('broDayImage');
+  
+  // Apply styling based on state
+  if (isBroDay) {
+    // Bro Day: centered layout with image, no scroll
+    document.body.classList.remove('not-bro-day');
+    document.body.classList.add('rainbow');
+    scrollContainer.classList.add('centered');
+    scrollContent.classList.remove('not-bro-day');
+    scrollContent.classList.add('rainbow');
+    scrollContent.classList.add('centered');
+    broDayImage.style.display = 'block';
+    
+    // Create single centered text (no scrolling)
+    scrollContent.innerHTML = '';
+    scrollContent.textContent = text;
+  } else {
+    // Not Bro Day: scrolling text
+    document.body.classList.remove('rainbow');
+    document.body.classList.add('not-bro-day');
+    scrollContainer.classList.remove('centered');
+    scrollContent.classList.remove('rainbow');
+    scrollContent.classList.remove('centered');
+    scrollContent.classList.add('not-bro-day');
+    broDayImage.style.display = 'none';
+    
+    // Create infinite scrolling text
+    createInfiniteText(text, scrollContent);
+  }
+}
+
 updatePage();
 </script>
 </body>
