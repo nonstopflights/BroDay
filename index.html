@@ -142,21 +142,21 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0.02em 0.02em 0 rgba(0,0,0,0.2))
-          drop-shadow(0 0 30px rgba(255, 85, 161, 0.4));
+  filter: drop-shadow(0.02em 0.02em 0 rgba(0,0,0,0.1))
+          drop-shadow(0 0 8px rgba(255, 85, 161, 0.15));
   animation: yes-pulse 1.8s ease-in-out infinite;
 }
 
 @keyframes yes-pulse {
   0%, 100% {
     transform: scale(1);
-    filter: drop-shadow(0.02em 0.02em 0 rgba(0,0,0,0.2))
-            drop-shadow(0 0 30px rgba(255, 85, 161, 0.4));
+    filter: drop-shadow(0.02em 0.02em 0 rgba(0,0,0,0.1))
+            drop-shadow(0 0 8px rgba(255, 85, 161, 0.15));
   }
   50% {
     transform: scale(1.04);
-    filter: drop-shadow(0.03em 0.03em 0 rgba(0,0,0,0.15))
-            drop-shadow(0 0 50px rgba(255, 85, 161, 0.6));
+    filter: drop-shadow(0.02em 0.02em 0 rgba(0,0,0,0.08))
+            drop-shadow(0 0 12px rgba(255, 85, 161, 0.2));
   }
 }
 
@@ -213,6 +213,15 @@ function updatePage() {
     bodyEl.classList.add('is-bro-day');
     noContainer.classList.add('hidden');
     yesContainer.classList.remove('hidden');
+
+    const words = ['yes', 'thank', 'god'];
+    let i = 0;
+    const yesText = document.getElementById('yesText');
+    yesText.textContent = words[0];
+    setInterval(function() {
+      i = (i + 1) % words.length;
+      yesText.textContent = words[i];
+    }, 500);
   } else {
     bodyEl.classList.remove('is-bro-day');
     noContainer.classList.remove('hidden');
