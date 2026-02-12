@@ -116,13 +116,21 @@ body {
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 0.5rem;
 }
 
+.yes-logo {
+  max-width: min(40vw, 40vh);
+  height: auto;
+  margin-bottom: 1rem;
+  animation: yes-pulse 1.8s ease-in-out infinite;
+}
+
 .yes-text {
-  font-family: 'Bungee Shade', 'Bungee', cursive;
+  font-family: 'Bungee', 'Impact', sans-serif;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -0.03em;
@@ -178,6 +186,7 @@ body.is-bro-day {
   </div>
 </div>
 <div class="yes-container hidden" id="yesContainer">
+  <img src="pics/logo.png" alt="Bro Day" class="yes-logo">
   <span class="yes-text" id="yesText">YES</span>
 </div>
 <script>
