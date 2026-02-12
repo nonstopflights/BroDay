@@ -125,7 +125,7 @@ body {
 .yes-logo {
   max-width: min(40vw, 40vh);
   height: auto;
-  margin-bottom: 1rem;
+  margin: 0.5rem 0;
   animation: yes-pulse 1.8s ease-in-out infinite;
 }
 
@@ -160,16 +160,9 @@ body {
   }
 }
 
-/* Subtle background shimmer on YES day */
+/* Background on YES day — solid white so logo blends cleanly */
 body.is-bro-day {
-  background: linear-gradient(135deg, #fff 0%, #fff5f8 50%, #fff 100%);
-  background-size: 200% 200%;
-  animation: bg-shimmer 8s ease-in-out infinite;
-}
-
-@keyframes bg-shimmer {
-  0%, 100% { background-position: 0% 50%; }
-  50%      { background-position: 100% 50%; }
+  background: #fff;
 }
 
 /* Hide the one we're not showing */
@@ -186,8 +179,9 @@ body.is-bro-day {
   </div>
 </div>
 <div class="yes-container hidden" id="yesContainer">
+  <span class="yes-text">yes!!</span>
   <img src="pics/logo.png" alt="Bro Day" class="yes-logo">
-  <span class="yes-text" id="yesText">YES</span>
+  <span class="yes-text">thank god</span>
 </div>
 <script>
 function getUrlParams() {
@@ -213,15 +207,6 @@ function updatePage() {
     bodyEl.classList.add('is-bro-day');
     noContainer.classList.add('hidden');
     yesContainer.classList.remove('hidden');
-
-    const words = ['yes', 'thank', 'god'];
-    let i = 0;
-    const yesText = document.getElementById('yesText');
-    yesText.textContent = words[0];
-    setInterval(function() {
-      i = (i + 1) % words.length;
-      yesText.textContent = words[i];
-    }, 500);
   } else {
     bodyEl.classList.remove('is-bro-day');
     noContainer.classList.remove('hidden');
