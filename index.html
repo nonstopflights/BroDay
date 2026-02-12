@@ -123,10 +123,9 @@ body {
 }
 
 .yes-logo {
-  max-width: min(40vw, 40vh);
+  max-width: min(40vw, 30vh);
   height: auto;
   margin: 0.5rem 0;
-  animation: yes-pulse 1.8s ease-in-out infinite;
 }
 
 .yes-text {
@@ -134,30 +133,10 @@ body {
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -0.03em;
-  font-size: min(28vw, 28vh);
-  line-height: 0.9;
+  font-size: min(18vw, 15vh);
+  line-height: 1;
   text-align: center;
   color: #ff006e;
-  background: linear-gradient(135deg, #ff55a1 0%, #ff006e 50%, #7b2cbf 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0.02em 0.02em 0 rgba(0,0,0,0.1))
-          drop-shadow(0 0 8px rgba(255, 85, 161, 0.15));
-  animation: yes-pulse 1.8s ease-in-out infinite;
-}
-
-@keyframes yes-pulse {
-  0%, 100% {
-    transform: scale(1);
-    filter: drop-shadow(0.02em 0.02em 0 rgba(0,0,0,0.1))
-            drop-shadow(0 0 8px rgba(255, 85, 161, 0.15));
-  }
-  50% {
-    transform: scale(1.04);
-    filter: drop-shadow(0.02em 0.02em 0 rgba(0,0,0,0.08))
-            drop-shadow(0 0 12px rgba(255, 85, 161, 0.2));
-  }
 }
 
 /* Background on YES day — solid white so logo blends cleanly */
